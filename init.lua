@@ -104,12 +104,18 @@ vim.opt.number = true
 --  Experiment for yourself to see if you like it!
 vim.opt.relativenumber = true
 
+vim.opt.termguicolors = true
+
+vim.opt.winbar = '%m %f'
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
 
+-- Escape terminal
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
@@ -163,7 +169,6 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<C-s>', ':w<CR>', { desc = 'Save file' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -770,20 +775,6 @@ require('lazy').setup {
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
-
-      -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
-      --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
-      statusline.setup()
-
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we disable the section for
-      -- cursor information because line numbers are already enabled
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return ''
-      end
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
