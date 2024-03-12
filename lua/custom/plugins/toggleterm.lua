@@ -8,6 +8,6 @@ return {
       hide_numbers = true,
       shell = 'powershell',
     }
-    vim.keymap.set('n', '<leader>t', '<cmd>ToggleTerm direction=float<cr>')
+    vim.keymap.set('n', '<leader>t', '<cmd>ToggleTerm direction=float<cr>', { noremap = true, silent = true, desc = 'Toggle terminal' })
   end,
 }
