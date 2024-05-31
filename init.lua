@@ -88,6 +88,12 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+--
+if vim.g.vscode then
+  return
+end
+
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -567,10 +573,6 @@ require('lazy').setup {
               },
             },
           },
-        },
-        ruff_lsp = {
-          cmd = { 'ruff-lsp' },
-          filetypes = { 'python' },
         },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
